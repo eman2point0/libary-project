@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app-title">
+      <h1>Library Project</h1>
+    </div>
+    <div class="book-section">
+      <div class="book">
+        <div class="info">
+          <h3>Title: Curious George</h3>
+          <h4>Author: Margaret & H.A.Rey's</h4>
+          <h4># of Pages: 5</h4>
+        </div>
+        <div class="book-options">
+          <input type="button" value="Read" class="readBtn" />
+          <input type="button" value="Remove" class="removeBtn" />
+        </div>
+      </div>
+      <div class="book">
+        <div class="info">
+          <h3>Title: Eragon</h3>
+          <h4>Author: Chirstopher Paolini</h4>
+          <h4># of Pages: 509</h4>
+        </div>
+        <div class="book-options">
+          <input type="button" value="Read" class="readBtn" />
+          <input type="button" value="Remove" class="removeBtn" />
+        </div>
+      </div>
+    </div>
+    <input type="button" value="Add Book" id="addBtn" />
+
+    <dialog>
+      <form action="./5500/index.html" method="post" class="add-book-form">
+        <div class="form-input">
+          <label for="bookTitle">Title: </label>
+          <input type="text" name="title" id="bookTitle" />
+        </div>
+        <div class="form-input">
+          <label for="bookAuthor">Author: </label>
+          <input type="text" name="author" id="bookAuthor" />
+        </div>
+        <div class="form-input">
+          <label for="pageNum"># of Pages: </label>
+          <input type="number" name="pages" id="pageNum" min="1" />
+        </div>
+        <fieldset>
+          <div>
+            <input
+              type="radio"
+              name="read_attribute"
+              id="confirmRead"
+              checked
+            />
+            <label for="confirmRead">Read</label>
+          </div>
+          <div>
+            <input type="radio" name="read_attribute" id="notRead" />
+            <label for="notRead">Not Read</label>
+          </div>
+        </fieldset>
+        <button type="submit" id="submitBtn">Submit</button>
+      </form>
+    </dialog>
+
+    <script src="./library.js"></script>
+  </body>
+</html>

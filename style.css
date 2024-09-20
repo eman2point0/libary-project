@@ -1,0 +1,75 @@
+body{
+    display: grid;
+    justify-content: center;
+}
+
+.app-title{
+    text-align: center;
+}
+.book-section{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    grid-template-rows: 1fr;
+    column-gap: 20px;
+}
+
+.book{
+    display: grid;
+    padding: 5px;
+    background-color: white;
+    justify-items: center;
+}
+
+.book:hover{
+    background-color: blue;
+}
+
+input[type="button"]{
+    height: 50px;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px gray;
+}
+
+input[type="button"]:active{
+    box-shadow: 0 2px gray;
+    transform: translateY(4px);
+}
+
+.removeBtn{
+    color: black;
+    background-color: red;
+    border-color: black;
+}
+
+.readBtn{
+    background-color: green;
+    color: black;
+    border-color: black;
+}
+
+#addBtn{
+    margin-top: 30px;
+}
+
+#add-book-form-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    background-color: gray;
+}
+
+
+
+.form-input{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+}
+
+#submitBtn{
+    height: fit-content;
+    width: 50%;
+    display: grid;
+    justify-self: center;
+}
