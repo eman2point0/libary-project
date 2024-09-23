@@ -20,16 +20,20 @@ function Book(title, author, pages, read) {
   };
 }
 
-function addBookToLibrary() {
-  const newBook = new Book("Fahrenheit 451", "Ray Bradbury", 242, true);
-  console.log(newBook.bookInfo());
-  myLibrary.push(newBook);
-}
-
 /*Button actions*/
 addBtn.onclick = () => {
   dialog.showModal();
 };
+
+const removeBtns = document.querySelectorAll(".removeBtn");
+removeBtns.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const bookSection = document.querySelector(".book-section");
+    const book = button.parentElement.parentElement;
+    console.log("Remove Button has been clicked!");
+    bookSection.removeChild(book);
+  });
+});
 
 submitFormBtn.onclick = () => {
   const bookSection = document.querySelector(".book-section");
@@ -40,90 +44,45 @@ submitFormBtn.onclick = () => {
     'input[name="read_attribute"]:checked'
   ).value;
 
-  const bookDiv = document.createElement("div");
-  bookDiv.classList.add("book");
-
-  const bookInfo = document.createElement("div");
-  bookInfo.classList.add("info");
-
-  const title = document.createElement("h3");
-  title.textContent = "Title: " + titleInput;
-
-  const author = document.createElement("h4");
-  author.textContent = "Author: " + authorInput;
-
-  const pages = document.createElement("h4");
-  pages.textContent = "# of pages: " + pageCount;
-
   const newBook = new Book(titleInput, authorInput, pageCount, read);
 
-  console.log(
-    "Validated if book is read or not: " + validateReadOption(newBook)
-  );
-  myLibrary.push(newBook);
-  console.log(newBook);
-  bookInfo.appendChild(title);
-  bookInfo.appendChild(author);
-  bookInfo.appendChild(pages);
-
-  bookDiv.appendChild(bookInfo);
-
-  const buttonSection = document.createElement("div");
-  buttonSection.classList.add("book-options");
-
-  const readBtn = document.createElement("input");
-  readBtn.setAttribute("type", "button");
-  readBtn.setAttribute("value", "Read");
-  readBtn.classList.add("readBtn");
-
-  readBtn.style.backgroundColor = validateReadOption(newBook);
-
-  const removeBtn = document.createElement("input");
-  removeBtn.setAttribute("type", "button");
-  removeBtn.setAttribute("value", "Remove");
-  removeBtn.classList.add("removeBtn");
-
-  buttonSection.appendChild(readBtn);
-  buttonSection.appendChild(removeBtn);
-
-  bookDiv.appendChild(buttonSection);
-  bookSection.appendChild(bookDiv);
+  updateLibrary(newBook);
+  addBookToPage(newBook);
   form.reset();
   dialog.close();
 };
 
-function validateReadOption(Book) {
-  if (Book.read === "true") {
+function validateReadOption(book) {
+  if (book.read === "true") {
     return "green";
   } else {
     return "red";
   }
 }
 
-const readButtons = document.querySelectorAll(".readBtn");
-readButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    alert(button.id);
-  });
-});
+function updateLibrary(book) {
+  myLibrary.push(book);
+  console.log("New Book has been added!");
+  book.bookInfo();
+}
 
-function addBookToPage() {
+function addBookToPage(book) {
   const bookSection = document.querySelector(".book-section");
 
   const bookBackground = document.createElement("div");
   bookBackground.classList.add("book");
 
-  const bookInfo = document.createElement("div", "info");
+  const bookInfo = document.createElement("div");
   bookInfo.classList.add("info");
 
   const title = document.createElement("h3");
-  title.textContent = "Title: Fahrenheit 451";
+  title.textContent = "Title: " + book.title;
 
   const author = document.createElement("h4");
-  author.textContent = "Author: Ray Bradbury";
+  author.textContent = "Author: " + book.author;
 
   const pageCount = document.createElement("h4");
-  pageCount.textContent = "# of Pages: 242";
+  pageCount.textContent = "# of Pages: " + book.pages;
   bookInfo.append(title);
   bookInfo.append(author);
   bookInfo.append(pageCount);
@@ -141,10 +100,32 @@ function addBookToPage() {
   removeBtn.setAttribute("type", "button");
   removeBtn.setAttribute("value", "Remove");
   removeBtn.classList.add("removeBtn");
+  removeBtn.addEventListener("click", (event) => {
+    console.log("Remove Button has been clicked!");
+    const bookSection = document.querySelector(".book-section");
+    const book = removeBtn.parentElement.parentElement;
+    bookSection.removeChild(book);
+  });
   buttonSection.append(readBtn);
   buttonSection.append(removeBtn);
   bookBackground.append(buttonSection);
   bookSection.append(bookBackground);
 }
 
-addBookToPage();
+const curiousGeorgeBook = new Book(
+  "Curious George",
+  "Maragaret & H.A.Rey's",
+  5,
+  true
+);
+
+const fahrenheitBook = new Book("Fahrenheit 451", "Ray Bradbury", 242, true);
+const eragonBook = new Book("Eragon", "Chirstopher Paolini", 509, true);
+myLibrary.push(curiousGeorgeBook);
+myLibrary.push(eragonBook);
+addBookToPage(fahrenheitBook);
+myLibrary.push(fahrenheitBook);
+
+myLibrary.forEach((book) => {
+  book.bookInfo();
+});
