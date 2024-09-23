@@ -37,14 +37,14 @@
     <input type="button" value="Add Book" id="addBtn" />
 
     <dialog>
-      <form action="./5500/index.html" method="post" class="add-book-form">
+      <form method="dialog" class="add-book-form">
         <div class="form-input">
           <label for="bookTitle">Title: </label>
-          <input type="text" name="title" id="bookTitle" />
+          <input type="text" name="title" id="bookTitle" autofocus />
         </div>
         <div class="form-input">
-          <label for="bookAuthor">Author: </label>
-          <input type="text" name="author" id="bookAuthor" />
+          <label for="inputAuthor">Author: </label>
+          <input type="text" name="author" id="inputAuthor" />
         </div>
         <div class="form-input">
           <label for="pageNum"># of Pages: </label>
@@ -56,12 +56,18 @@
               type="radio"
               name="read_attribute"
               id="confirmRead"
+              value="true"
               checked
             />
             <label for="confirmRead">Read</label>
           </div>
           <div>
-            <input type="radio" name="read_attribute" id="notRead" />
+            <input
+              type="radio"
+              name="read_attribute"
+              value="false"
+              id="notRead"
+            />
             <label for="notRead">Not Read</label>
           </div>
         </fieldset>

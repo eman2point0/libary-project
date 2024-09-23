@@ -10,14 +10,24 @@ body{
     display: grid;
     grid-template-columns: repeat(2, minmax(200px, 1fr));
     grid-template-rows: 1fr;
+    grid-auto-rows: 1fr;
     column-gap: 20px;
+    row-gap: 10px;
 }
 
 .book{
     display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr max-content;
     padding: 5px;
     background-color: white;
     justify-items: center;
+}
+
+.book-options{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 
 .book:hover{
@@ -72,4 +82,18 @@ input[type="button"]:active{
     width: 50%;
     display: grid;
     justify-self: center;
+}
+
+[aria-label="close"]{
+    display: block;
+    appearance: none;
+    border-radius: 50%;
+    border: 1px solid;
+    float: right;
+}
+
+
+
+dialog::backdrop{
+    backdrop-filter: blur(5px);
 }
