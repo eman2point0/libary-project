@@ -135,7 +135,7 @@ const curiousGeorgeBook = new Book(
   true
 );
 const fahrenheitBook = new Book("Fahrenheit 451", "Ray Bradbury", 242, true);
-const eragonBook = new Book("Eragon", "Chirstopher Paolini", 509, true);
+const eragonBook = new Book("Eragon", "Christopher Paolini", 509, true);
 myLibrary.push(curiousGeorgeBook);
 myLibrary.push(eragonBook);
 myLibrary.push(fahrenheitBook);
